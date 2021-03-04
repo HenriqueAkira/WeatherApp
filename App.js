@@ -1,6 +1,8 @@
 import React from 'react';
 import { StyleSheet, Text, TextInput, View, Image, Platform, KeyboardAvoidingView } from 'react-native';
 
+import SearchInput from './components/SearchInput';
+
 export default class App extends React.Component {
   render() {
     return (
@@ -8,7 +10,7 @@ export default class App extends React.Component {
         <Text style={[styles.largeText, styles.textStyle]}>San Francisco</Text>
         <Text style={[styles.smallText, styles.textStyle]}>Light Cloud</Text>
         <Text style={[styles.largeText, styles.textStyle]}>24°</Text>
-        <TextInput style={styles.textInput} placeholder="Search any city" placeholderTextColor="white" autoCorrect={false} clearButtonMode="always"></TextInput>
+        <SearchInput placeholder="Search any city"></SearchInput>
       </KeyboardAvoidingView>
     );
   }
