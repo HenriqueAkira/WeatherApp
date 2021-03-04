@@ -5,7 +5,7 @@ export default class App extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <TextInput style={styles.textInput} 
+        <TextInput style={textAlign}
                 placeholder={this.props.placeholder}
                 placeholderTextColor="white" 
                 autoCorrect={false} 
@@ -15,18 +15,17 @@ export default class App extends React.Component {
   }
 }
 
-const redColor = {color: "red"}
+const textAlign = {textAlign: 'center', textAlignVertical: 'bottom'}
 
 const styles = StyleSheet.create({
 
-  textInput: {
-    backgroundColor: "#666",
-    color: "white",
-    height: 40,
-    width: 300,
+  container: {
     marginTop: 20,
-    marginHorizontal: 20,
+    backgroundColor: '#666',
+    marginHorizontal: 40,
+    height: 40,
     paddingHorizontal: 10,
-    textAlign:"center",
-  }
+    borderRadius: 5,
+    },
+    
 });
