@@ -7,22 +7,37 @@ import getImageForWeather from './utils/getImageForWeather';
 
 
 export default class App extends React.Component {
+  
+  constructor(props) {
+    super(props);
+    this.state = {
+      location: 'San Francisco',
+    };
+  }
+  
+handleUpdateLocation = (city) => this.setState({
+  location: city,
+  });; 
+
+
   render() {
     return (
+
       <ImageBackground
           source={getImageForWeather('Clear')}
           style={styles.imageContainer}
           imageStyle={styles.image}>
             <View style={styles.detailsContainer}>
-              <Text style={[styles.largeText, styles.textStyle]}>San Francisco</Text>
+              <Text style={[styles.largeText, styles.textStyle]}>{this.state.location}</Text>
               <Text style={[styles.smallText, styles.textStyle]}>Light Cloud</Text>
               <Text style={[styles.largeText, styles.textStyle]}>24°</Text> 
-              <SearchInput placeholder="Search any city"></SearchInput>
+              <SearchInput placeholder="Search any city" onSubmit={this.handleUpdateLocation}></SearchInput>
             </View>
-        </ImageBackground>
+      </ImageBackground>
     );
   }
 }
+
 
 
 const styles = StyleSheet.create({

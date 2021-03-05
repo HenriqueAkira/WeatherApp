@@ -2,6 +2,31 @@ import React from 'react';
 import { StyleSheet, TextInput, View} from 'react-native';
 
 export default class App extends React.Component {
+
+  
+  constructor(props) {
+    super(props);
+    this.state = {
+      text: '',
+    };
+  }
+    
+  handleChangeText = (newLocation) =>{
+    this.setState({text: newLocation})
+  }
+
+  handleSubmitEditing = () =>{
+    const onSubmit = this.props.onSubmit;
+    const text = this.state.text;
+    console.log(text)
+    console.log(!text)
+    if (!text) return;
+    console.log(text)
+    onSubmit(text);
+    this.setState({ text: '' });
+
+  };
+  
   render() {
     return (
       <View style={styles.container}>
@@ -9,7 +34,10 @@ export default class App extends React.Component {
                 placeholder={this.props.placeholder}
                 placeholderTextColor="white" 
                 autoCorrect={false} 
-                clearButtonMode="always"></TextInput>
+                clearButtonMode="always"
+                onChangeText={this.handleChangeText}
+                onSubmitEditing={this.handleSubmitEditing}
+                ></TextInput>
       </View>
     );
   }
