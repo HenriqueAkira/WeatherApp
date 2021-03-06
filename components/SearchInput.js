@@ -15,17 +15,14 @@ export default class App extends React.Component {
     this.setState({text: newLocation})
   }
 
-  handleSubmitEditing = () =>{
+  handleSubmitText = () => {
     const onSubmit = this.props.onSubmit;
     const text = this.state.text;
-    console.log(text)
-    console.log(!text)
-    if (!text) return;
-    console.log(text)
-    onSubmit(text);
-    this.setState({ text: '' });
 
-  };
+    if (!text){return}
+
+    onSubmit(text)
+  }
   
   render() {
     return (
@@ -36,7 +33,7 @@ export default class App extends React.Component {
                 autoCorrect={false} 
                 clearButtonMode="always"
                 onChangeText={this.handleChangeText}
-                onSubmitEditing={this.handleSubmitEditing}
+                onSubmitEditing={this.handleSubmitText}
                 ></TextInput>
       </View>
     );

@@ -14,12 +14,13 @@ export default class App extends React.Component {
       location: 'San Francisco',
     };
   }
+
+  changeLocation = (text) =>{
+    this.setState({location: text});
+    console.log(this.state.location + "asafda fafa")
+  }
+
   
-handleUpdateLocation = (city) => this.setState({
-  location: city,
-  });; 
-
-
   render() {
     return (
 
@@ -31,7 +32,7 @@ handleUpdateLocation = (city) => this.setState({
               <Text style={[styles.largeText, styles.textStyle]}>{this.state.location}</Text>
               <Text style={[styles.smallText, styles.textStyle]}>Light Cloud</Text>
               <Text style={[styles.largeText, styles.textStyle]}>24°</Text> 
-              <SearchInput placeholder="Search any city" onSubmit={this.handleUpdateLocation}></SearchInput>
+              <SearchInput placeholder="Search any city" onSubmit={this.changeLocation}></SearchInput>
             </View>
       </ImageBackground>
     );
