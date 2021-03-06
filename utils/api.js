@@ -1,21 +1,6 @@
-export const fetchLocationId = async city => {
-  const response = await fetch(
-    `https://www.metaweather.com/api/location/search/?query=${city}`,
-  );
-  const locations = await response.json();
-  return locations[0].woeid;
+export const apiWeather = async (city) => {
+  let response = await fetch(`https://www.metaweather.com/api/location/search/?query=${cityt}`)
+  .then((response) => response.json()).then((city) => this.setState({text: city[0].title}))
 };
-
-export const fetchWeather = async woeid => {
-  const response = await fetch(
-    `https://www.metaweather.com/api/location/${woeid}/`,
-  );
-  const { title, consolidated_weather } = await response.json();
-  const { weather_state_name, the_temp } = consolidated_weather[0];
-
-  return {
-    location: title,
-    weather: weather_state_name,
-    temperature: the_temp,
-  };
-};
+  
+  

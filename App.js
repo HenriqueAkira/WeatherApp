@@ -11,15 +11,20 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      location: 'San Francisco',
+      location: '',
+      temperature: '',
     };
   }
 
-  changeLocation = (text) =>{
-    this.setState({location: text});
-    console.log(this.state.location + "asafda fafa")
+  handleUpdateLocation = async (city) =>{
+      let response = await fetch(`https://www.metaweather.com/api/location/search/?query=${city}`)
+      .then((response) => response.json()).then((city) => this.setState({location: city[0].title, temperature: 0}))
+      
   }
 
+  componentDidMount = () =>{
+    this.handleUpdateLocation("San Francisco")
+  }
   
   render() {
     return (
@@ -31,8 +36,8 @@ export default class App extends React.Component {
             <View style={styles.detailsContainer}>
               <Text style={[styles.largeText, styles.textStyle]}>{this.state.location}</Text>
               <Text style={[styles.smallText, styles.textStyle]}>Light Cloud</Text>
-              <Text style={[styles.largeText, styles.textStyle]}>24°</Text> 
-              <SearchInput placeholder="Search any city" onSubmit={this.changeLocation}></SearchInput>
+              <Text style={[styles.largeText, styles.textStyle]}>{this.state.temperature}</Text> 
+              <SearchInput placeholder="Search any city" onSubmit={this.handleUpdateLocation}></SearchInput>
             </View>
       </ImageBackground>
     );
