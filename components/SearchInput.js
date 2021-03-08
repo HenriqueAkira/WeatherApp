@@ -9,11 +9,9 @@ export default class App extends React.Component {
     this.state = {
       text: '',
     };
-    console.log("SEARCH CONSTRUCTOR");
   }
   
   componentDidMount(){
-    console.log("SEARCHMOUNT");
   }
   
     
