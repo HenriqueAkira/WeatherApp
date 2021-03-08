@@ -49,7 +49,7 @@ getCityInfo = async (city) =>{
     const {loading,error,location,weather,temperature} = this.state;
     return (
       <ImageBackground
-          source={getImageForWeather('Clear')}
+          source={getImageForWeather(weather)}
           style={styles.imageContainer}
           imageStyle={styles.image}>
             <View style={styles.detailsContainer}>
